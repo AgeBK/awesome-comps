@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.category {
+  border: 1px solid #555;
+  cursor: pointer;
+  padding: 20px;
+  flex-grow: 1;
+}
+
+.img {
+  max-width: 300px;
+}
