@@ -1,8 +1,11 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+// import logo from './logo.png' you can import individual images like this
+
 import { ComputerContext } from "../../context/";
 import styles from "./home.module.css";
 
-function App() {
+function Home() {
   const { products } = useContext(ComputerContext);
 
   const test2 = products.reduce(
@@ -22,13 +25,17 @@ function App() {
     const { image, category } = val;
     return (
       <div className={styles.category} key={i}>
-        <h3>{category}</h3>
         <div>
-          <img
-            src={require("../../img/" + image)} //todo: require?
-            alt={category}
-            className={styles.img}
-          />
+          <Link to={`/${category.toLowerCase()}`}>
+            <div className={styles.imgCont}>
+              <img
+                src={require("../../img/" + image)} // you need to reqire images for webpack to process them
+                alt={category}
+                className={styles.img}
+              />
+            </div>
+            <h3>{category}</h3>
+          </Link>
         </div>
       </div>
     );
@@ -37,4 +44,4 @@ function App() {
   return <div className={styles.container}>{catData}</div>;
 }
 
-export default App;
+export default Home;
